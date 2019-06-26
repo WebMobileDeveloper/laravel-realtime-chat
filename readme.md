@@ -26,7 +26,7 @@ The following are required to function properly.
 **_Step : 1_**
 
 ```
-git clone https://github.com/sagarankoliya/realtime-private-chat-nodejs-socketio-vuejs-laravel.git
+git clone https://github.com/WebMobileDeveloper/laravel-realtime-chat.git
 ```
 
 **_Step : 2_**
@@ -34,7 +34,9 @@ git clone https://github.com/sagarankoliya/realtime-private-chat-nodejs-socketio
 Go to project directory using **Terminal / CMD**
 
 ```
-composer install
+$ composer install
+
+$ npm install
 ```
 
 **_Step : 3_**
@@ -69,22 +71,65 @@ WS_URL=http://localhost:3000/
 Run Migration & Seeder
 
 ```
-php artisan migrate
+$ php artisan migrate
 
-php artisan db:seed --class=UserTableSeeder
+$ php artisan db:seed --class=UserTableSeeder
 ```
 
 **_Step : 5_**
 
 Go to project directory using **Terminal / CMD**
 
-Open **nodejs** folder
-
-install node dependencies
+Open **project root / nodejs** folder and **install** node dependencies
 
 ```
-npm install
+$ cd nodejs
+
+$ npm install
 ```
+
+
+<!-- **_Step : 6_**
+
+**_Installation Redis Server_**
+
+Go to project directory using **Terminal / CMD**
+
+extract and compile Redis with:
+
+```
+$ tar xzf redis-5.0.5.tar.gz
+
+$ cd redis-5.0.5
+
+$ make
+```
+Run Redis with:
+
+```
+$ src/redis-server
+```
+
+You can interact with Redis using the built-in client:
+
+```
+$ src/redis-cli
+
+redis> set foo bar
+
+OK
+
+redis> get foo
+
+"bar"
+```
+
+There is also a useful utility that can be started to verify connection and message pushed into the queue.
+
+```
+$ redis-cli monitor
+``` -->
+
 
 **_Step : 6_**
 
@@ -106,14 +151,17 @@ below database configuration is same as above.
 
 **Start Node JS Chat Server**
 
-Go to project directory using **Terminal / CMD** Open **nodejs** folder
+Go to project directory using **Terminal / CMD** 
+
+Open **project root / nodejs** folder
 
 ```
-export NODE_ENV=dev
-npm start
+$ export NODE_ENV=dev
+$ npm start
 
+or
 
-or npm run dev
+$ npm run dev
 ```
 
 **Start Laravel Server**
@@ -134,6 +182,8 @@ Open http://127.0.0.1:8000 url in multipal browser
 | 1  | user1@gmail.com  | 123456 |
 | 2  | user2@gmail.com  | 123456 |
 | 3  | user3@gmail.com  | 123456 |
+|...  | user...@gmail.com  | 123456 |
+| 50  | user50@gmail.com  | 123456 |
 
 **Login at least 2 user in different browser.**
 
