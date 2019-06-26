@@ -124,6 +124,10 @@ var app = new Vue({
                 $('#msginput-' + _chat.id).focus();
             }
             this.calcChatBoxStyle();
+            this.chatLists = this.chatLists.map(function (list) {
+                list.isActive = list.id == _chat.id ? true : false;
+                return list;
+            });
         },
         chatBoxClose: function chatBoxClose(eleId) {
             $('#chatbox-' + eleId).remove();

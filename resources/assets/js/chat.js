@@ -11,7 +11,7 @@ var app = new Vue({
             status: false,
             msg: 'Connecting Please Wait...'
         },
-        bArr: {}
+        bArr: {},
     },
     methods: {
         chat: function (chat) {
@@ -46,6 +46,10 @@ var app = new Vue({
                 $('#msginput-' + chat.id).focus();
             }
             this.calcChatBoxStyle();
+            this.chatLists = this.chatLists.map(list => {
+                list.isActive = list.id == chat.id ? true : false;
+                return list;
+            })
         },
         chatBoxClose: function (eleId) {
             $('#chatbox-' + eleId).remove();

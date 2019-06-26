@@ -12,12 +12,23 @@
     .box-style {
         height: 100%;
         position: fixed;
+        overflow: hidden;
         z-index: 1;
         top: 0;
-        overflow-x: hidden;
         padding-top: 50px;
     }
-
+    .panel-default > .panel-heading{
+        border-top: solid 3px #3c8dbc;
+    }
+    .panel-body{        
+        height: calc(100% - 50px);
+        border-left: solid 1px darkgray;
+        border-bottom: solid 1px darkgray;
+        overflow: hidden auto;
+    }
+    .panel-body > .list-group{
+        margin-bottom: 0;
+    }
     .box-left-side {
         left: 0;
         width: 18em;
@@ -59,7 +70,8 @@
                 <div class="panel-heading">Users</div>
                 <div class="panel-body" style="padding:0px;">
                     <ul class="list-group">
-                        <li class="list-group-item" v-for="chatList in chatLists" style="cursor: pointer;" @click="chat(chatList)">
+                        <li class="list-group-item" v-bind:class="{ active:chatList.isActive }" v-for="chatList in chatLists" 
+                        style="cursor: pointer;" @click="chat(chatList)">
                             @{{ chatList.name }}
                             <i class="fa fa-circle pull-right" v-bind:class="{'online': (chatList.online=='Y')}"></i>
                             <span class="badge" v-if="chatList.msgCount !=0">@{{ chatList.msgCount }}</span>
